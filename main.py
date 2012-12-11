@@ -46,6 +46,26 @@ fields = {
 
 TITLES = fields.keys()
 
+def get_domain(url):
+    host = urlparse.urlparse(url).hostname
+
+    domain = ""
+
+    for base in BASE_DOMAINS:
+        if base in host:
+            domain_index = host.index(base)
+            domain = host[:domain_index]
+
+            # check if subdomains exists
+            if "." in domain:
+                subdomain = domain.split(".")[-1]
+            else:
+                subdomain = domain
+
+            domain = subdomain + base
+            break
+
+
 def not_duplicate(urls):
     current_domains = []
     filtered_urls = []

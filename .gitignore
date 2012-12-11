@@ -1,0 +1,5 @@
+.idea/*
+*.csv
+*.pyc
+.DS_Store
+.google-cookie
